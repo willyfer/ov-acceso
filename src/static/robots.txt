@@ -1,0 +1,3 @@
+User-Agent: *
+Disallow: /promotor
+Disallow: /productos

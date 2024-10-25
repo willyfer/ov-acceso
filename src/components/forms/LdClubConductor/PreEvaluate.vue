@@ -1,0 +1,315 @@
+<template>
+  <v-form ref="form" autocomplete="nope" @submit.prevent="setCaptcha">
+    <v-row dense>
+      <v-col cols="12">
+        <h2 class="ld-h2-title-form" :class="`${color}--text`">
+          Evaluador de efectivo LD
+        </h2>
+      </v-col>
+      <v-col cols="12" pb-2>
+        <label class="ld-form-p2">Ingresa tus datos básicos:</label>
+      </v-col>
+      <v-col cols="12" md="6" lg="6">
+        <v-select
+          v-model="datos.tipoDocumento"
+          v-validate="'required'"
+          :items="selectTipoDocumento"
+          item-text="tipdoc"
+          item-value="id"
+          :error-messages="errors.collect('datos.tipoDocumento')"
+          label="Tipo de documento"
+          data-vv-name="datos.tipoDocumento"
+          data-vv-as="Tipo"
+          :color="color"
+          required
+          readonly
+        />
+      </v-col>
+      <v-col cols="12" md="6" lg="6">
+        <v-text-field
+          v-model="datos.documento"
+          v-validate="'required|digits:8'"
+          :error-messages="errors.collect('datos.documento')"
+          label="Número de documento"
+          data-vv-name="datos.documento"
+          required
+          data-vv-as="Documento"
+          :counter="8"
+          type="tel"
+          maxlength="8"
+          :color="color"
+          @keypress="isNumber"
+        />
+      </v-col>
+      <v-col cols="12" md="6" lg="6">
+        <v-menu
+          v-model="menu"
+          :close-on-content-click="false"
+          :nudge-right="40"
+          transition="scale-transition"
+          offset-y
+          min-width="290px"
+        >
+          <template v-slot:activator="{ on }">
+            <v-text-field
+              v-model="formatFechaNacimiento"
+              v-validate="'required'"
+              label="Fecha de nacimiento"
+              prepend-icon="event"
+              color="soat"
+              required
+              data-vv-name="formatFechaNacimiento"
+              data-vv-as="fecha"
+              :error-messages="errors.collect('formatFechaNacimiento')"
+              maxlength="10"
+              readonly
+              v-on="on"
+            />
+          </template>
+          <v-date-picker
+            ref="picker"
+            v-model="datos.fechaNacimiento"
+            locale="es"
+            max="2000-01-01"
+            min="1930-01-01"
+            no-title
+            @input="menu = false"
+          />
+        </v-menu>
+      </v-col>
+      <v-col cols="12" md="6" lg="6">
+        <v-text-field
+          v-model="placa"
+          v-validate="{
+            required: true,
+            regex: /^([a-zA-Z][A-Za-z0-9][A-Za-z0-9][0-9][0-9][0-9]+)$/
+          }"
+          v-mask="'AXX-XXX'"
+          onkeyup="this.value = this.value.toUpperCase();"
+          label="Placa"
+          data-vv-as="placa"
+          data-vv-name="placa"
+          required
+          flat
+          :error-messages="errors.collect('placa')"
+          :color="color"
+          maxlength="7"
+          minlength="7"
+        />
+      </v-col>
+      <v-col cols="12" pb-2>
+        <label class="ld-form-p2">Recorrido por día ( aprox ) :</label>
+      </v-col>
+      <v-col cols="12">
+        <v-radio-group
+          v-model="datos.recorridoxDia"
+          v-validate="'required'"
+          colum
+          required
+          class="ld-radio-group"
+          :error-messages="errors.collect('datos.recorridoxDia')"
+          data-vv-name="datos.recorridoxDia"
+          data-vv-as="Recorrido"
+        >
+          <v-radio
+            :color="color"
+            class="ld-radio-p"
+            label="0 - 50 Km"
+            :value="1"
+          />
+          <v-radio
+            :color="color"
+            class="ld-radio-p"
+            label="51 - 100 Km"
+            :value="2"
+          />
+          <v-radio
+            :color="color"
+            class="ld-radio-p"
+            label="más de 100 Km"
+            :value="3"
+          />
+        </v-radio-group>
+      </v-col>
+      <v-col cols="12" pb-2>
+        <label class="ld-form-p2"
+          >Selecciona si tienes auto propio o alquilado:</label
+        >
+      </v-col>
+      <v-col cols="12">
+        <v-radio-group
+          v-model="datos.propietario"
+          v-validate="'required'"
+          required
+          class="ld-radio-group"
+          colum
+          :error-messages="errors.collect('datos.propietario')"
+          data-vv-name="datos.propietario"
+          data-vv-as="Propietario"
+        >
+          <v-radio
+            class="ld-radio-p"
+            :color="color"
+            label="Tengo un auto propio"
+            :value="true"
+          />
+          <v-radio
+            class="ld-radio-p"
+            :color="color"
+            label="Alquilo un auto"
+            :value="false"
+          />
+        </v-radio-group>
+      </v-col>
+      <v-col cols="12" pb-2>
+        <label class="ld-form-p2">Ingresa tu información de contacto:</label>
+      </v-col>
+      <v-col cols="12" md="6">
+        <v-text-field
+          v-model="datos.telefono"
+          v-validate="
+            'required|numeric|regex:^([9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+)$'
+          "
+          label="Número de telefono"
+          :error-messages="errors.collect('datos.telefono')"
+          data-vv-name="datos.telefono"
+          type="tel"
+          maxlength="9"
+          minlength="9"
+          required
+          :counter="9"
+          data-vv-as="Telf."
+          :color="color"
+          @keypress="isNumber"
+        />
+      </v-col>
+      <v-col cols="12" md="6">
+        <v-text-field
+          v-model="datos.email"
+          v-validate="'email|max:50|min:6'"
+          label="Correo electrónico (Opcional)"
+          :error-messages="errors.collect('datos.email')"
+          data-vv-name="datos.email"
+          type="email"
+          :maxlength="50"
+          :counter="50"
+          data-vv-as="email"
+          :color="color"
+        />
+      </v-col>
+      <v-col cols="12">
+        <span v-if="duplicateDoc" class="body-2 red--text"
+          >*DNI duplicado en formulario</span
+        >
+      </v-col>
+      <v-col cols="12">
+        <v-checkbox
+          v-model="datos.terminosCondiciones"
+          v-validate="'required'"
+          required
+          value="1"
+          :error-messages="errors.collect('datos.terminosCondiciones')"
+          data-vv-name="datos.terminosCondiciones"
+          data-vv-as="Terminos y condiciones"
+          type="checkbox"
+          :color="color"
+        >
+          <div slot="label">
+            Acepto los
+            <a slot="activator" :class="color + '--text'" @click="openTerms"
+              >Términos y Condiciones</a
+            >
+          </div>
+        </v-checkbox>
+      </v-col>
+      <v-col cols="12">
+        <span v-if="showError" class="body-2 red--text"
+          >*Completa todos los campos por favor</span
+        >
+      </v-col>
+      <v-col cols="12" text-center>
+        <v-btn
+          class="ld-btn"
+          type="submit"
+          :color="color"
+          :loading="loading"
+          :disbaled="loading"
+          :class="color"
+          >Solicítalo</v-btn
+        >
+      </v-col>
+      <v-dialog v-model="terms" persistent max-width="700">
+        <TerminosCondiciones :color="color" />
+      </v-dialog>
+      <!-- <modal-token :color="color"></modal-token> -->
+    </v-row>
+  </v-form>
+</template>
+<script>
+import { format, parseISO } from 'date-fns'
+import { mapState } from 'vuex'
+import { mixins } from '@/mixins/mixin.js'
+/* import ModalToken from '@/components/modals/ModalToken' */
+export default {
+  components: {
+    TerminosCondiciones: () => import('@/components/shared/terms/TerminosCondiciones')
+  },
+  mixins: [mixins],
+  props: ['color'],
+  data() {
+    return {
+      duplicateDoc: false,
+      showError: false,
+      dialog: false,
+
+      selectTipoDocumento: [
+        {
+          tipdoc: 'DNI',
+          id: 1
+        }
+        /* {tipdoc: "CE", id: "3"} */
+      ],
+      menu: false,
+      loading: false
+    }
+  },
+  computed: {
+    ...mapState('default', ['datos', 'terms']),
+    ...mapState('users', ['promotor']),
+    placa: {
+      get() {
+        return this.datos.placa ? this.datos.placa : null
+      },
+      set(v) {
+        if (v.length === 7) {
+          this.$store.commit('default/UPDATE_DATOS', {
+            placa: v.toUpperCase().replace('-', '')
+          })
+        }
+      }
+    },
+    documento() {
+      return this.datos.documento
+    },
+    telefono() {
+      return this.datos.telefono
+    },
+    codigoReferidos() {
+      return this.datos.codigoReferidos
+    },
+    formatFechaNacimiento() {
+      if (this.datos.fechaNacimiento) {
+        return format(parseISO(this.datos.fechaNacimiento), 'dd/MM/yyyy')
+      } else {
+        return null
+      }
+    }
+  },
+  methods: {
+    openTerms() {
+      this.$ga.event('Prospecto', 'Abrió Terminos y condiciones')
+      this.$store.commit('default/UPDATE_MODAL_TERMS', true)
+    }
+  }
+}
+</script>

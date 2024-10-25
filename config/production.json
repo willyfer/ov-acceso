@@ -1,0 +1,27 @@
+{
+  "environment": {
+    "NUXT_ENV": "PRODUCTION",
+    "NUXT_ENV_BASE_URL": "https://api.acr.pe",
+    "SITEKEY_CAPTCHA": "6LdLbpgUAAAAAIl_7dZwZerRBP1zI9CeU4N8Z5FP",
+    "SECRETKEY_CAPTCHA": "6LdLbpgUAAAAAFKvois5r5XOLjsmZyJdsOy546UZ",
+    "ID_ANALYTICS": "UA-130588802-1",
+    "DEFAULT_URL": "https://workflow.pe",
+    "arcaDJ": "4056652",
+    "ID_ADS": "AW-809651338",
+    "SEND_TO_ADS": "AW-809651338/jwnGCOaIqfoBEIqZiYID",
+
+    "NUXT_ENV_TEST_BASE_URL": "https://apiland.acceso.com.pe",
+    "NUXT_ENV_V4_BASE_URL": "https://api.acceso.com.pe",
+    "NUXT_ENV_V5_BASE_URL": "https://api.acr.pe",
+    "NUXT_ENV_V6_BASE_URL": "https://api.acr.pe",
+    "NUXT_ENV_V7_BASE_URL": "https://api.acceso.com.pe",
+    "NUXT_ENV_V8_BASE_URL": "https://api.acr.pe",
+    "NUXT_ENV_V9_BASE_URL": "https://api.acceso.com.pe",
+    "NUXT_ENV_BASE_KONG" : "https://api.acceso.com.pe",
+    "SOCKET_URL": "https://api.acceso.com.pe",
+    "SOCKET_URL_EXT": "https://biometrico.acceso.com.pe",
+    "BASIC_AUTH": "Basic YXBpYWNjYWNjOlZWMWc4SnZrN3A0djVoVFBSNFZj",
+    "BASIC_AUTH_KONG": "Basic YWNjZXNvQ3JlZGl0aWNpbzo5MWQ4YTJlZWNiMDgxOGYwNzg1ZjQzNjNhY2ZlNTIwMTNlODM2NWE1",
+    "NUXT_KEYJWT": "4cc3s0123"
+  }
+}

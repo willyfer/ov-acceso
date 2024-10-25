@@ -1,0 +1,249 @@
+::-webkit-scrollbar {
+  display: none !important;
+}
+
+.container {
+  width: 100%;
+  max-width: 1024px !important;
+  height: 100% !important;
+  min-height: calc(100vh - 64px) !important;
+  padding: 8px !important;
+  display: flex !important;
+  justify-content: center !important;
+  /* align-items: center !important; */
+  /* border: 2px solid red !important */
+}
+
+/* button */
+button {
+  text-decoration: none !important;
+  border: none !important;
+  border-style: none !important;
+  outline: inherit;
+}
+
+/* select component */
+.v-select-list {
+  border-radius: 4px !important;
+  /*  border: 1px solid #ffffff !important;*/
+  /*color: #fff !important;*/
+}
+
+.theme--light.v-list {
+  /*background-color: #1772aa;*/
+  border-radius: 2px !important;
+  border: 1px solid #ffffff !important;
+  /*color: #fff !important;*/
+}
+
+/* modals */
+.ld-modal {
+  border-radius: 12px !important;
+  overflow: inherit !important;
+  border: 2px solid #ffffff !important;
+  width: 100% !important;
+
+  background: rgba(255, 255, 255, 1) !important;
+  background: -moz-radial-gradient(center,
+      ellipse cover,
+      rgba(255, 255, 255, 1) 5%,
+      rgba(255, 255, 255, 1) 18%,
+      rgba(246, 246, 246, 1) 37%,
+      rgba(238, 238, 238, 1) 91%,
+      rgba(237, 237, 237, 1) 100%) !important;
+  background: -webkit-gradient(radial,
+      center center,
+      0px,
+      center center,
+      100%,
+      color-stop(5%, rgba(255, 255, 255, 1)),
+      color-stop(18%, rgba(255, 255, 255, 1)),
+      color-stop(37%, rgba(246, 246, 246, 1)),
+      color-stop(91%, rgba(238, 238, 238, 1)),
+      color-stop(100%, rgba(237, 237, 237, 1))) !important;
+  background: -webkit-radial-gradient(center,
+      ellipse cover,
+      rgba(255, 255, 255, 1) 5%,
+      rgba(255, 255, 255, 1) 18%,
+      rgba(246, 246, 246, 1) 37%,
+      rgba(238, 238, 238, 1) 91%,
+      rgba(237, 237, 237, 1) 100%) !important;
+  background: -o-radial-gradient(center,
+      ellipse cover,
+      rgba(255, 255, 255, 1) 5%,
+      rgba(255, 255, 255, 1) 18%,
+      rgba(246, 246, 246, 1) 37%,
+      rgba(238, 238, 238, 1) 91%,
+      rgba(237, 237, 237, 1) 100%) !important;
+  background: -ms-radial-gradient(center,
+      ellipse cover,
+      rgba(255, 255, 255, 1) 5%,
+      rgba(255, 255, 255, 1) 18%,
+      rgba(246, 246, 246, 1) 37%,
+      rgba(238, 238, 238, 1) 91%,
+      rgba(237, 237, 237, 1) 100%) !important;
+  background: radial-gradient(ellipse at center,
+      rgba(255, 255, 255, 1) 5%,
+      rgba(255, 255, 255, 1) 18%,
+      rgba(246, 246, 246, 1) 37%,
+      rgba(238, 238, 238, 1) 91%,
+      rgba(237, 237, 237, 1) 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=1);
+}
+
+.ld-modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0px 0px 5px 0px;
+  color: #e88444;
+}
+
+/* some errors */
+.ld-h3-error {
+  padding: 4px 0px;
+  color: yellow;
+  font-weight: 600;
+  font-size: 12px;
+  /* text-align: center; */
+  margin: 4px auto;
+}
+
+/* input number */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  /* -webkit-appearance: none; */
+  margin: 0;
+}
+
+/* ld */
+.ld-btn {
+  min-width: 150px !important;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  color: #ffffff !important;
+  min-width: 190px !important;
+  letter-spacing: 1px;
+}
+
+.ld-btn-cancel {
+  min-width: 150px !important;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  color: #ff7729 !important;
+  min-width: 190px !important;
+  letter-spacing: 1px;
+}
+
+.ld-btn-secondary {
+  min-width: 190px !important;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2) important !;
+  background-color: grey !important;
+  color: #ffffff !important;
+  letter-spacing: 1px;
+}
+
+/* COLUMN RIGHT */
+.ld-h2-title-form {
+  margin: 0 auto 16px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 600;
+}
+
+.row--dense>.col,
+.row--dense>[class*=col-] {
+  padding: 2px !important
+}
+
+.ld-form-p2 {
+  font-size: 16px;
+
+}
+
+.ld-radio-group {
+  margin-top: 0px;
+}
+
+.ld-h2-title-form-italic {
+  margin: 0 auto 18px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.termsOrange {
+  color: #e88444 !important;
+}
+
+@media (max-width: 768px) {
+  .ld-form-p2 {
+    font-size: 16px;
+  }
+
+  .row--dense>.col,
+  .row--dense>[class*=col-] {
+    padding: 0px !important
+  }
+
+  .container {
+    min-height: calc(100vh - 56px) !important;
+    /* padding: 16px !important; */
+  }
+
+  .ld-h2-title-form,
+  .ld-h2-title {
+    width: 100%;
+  }
+}
+
+.theme--dark.v-messages {
+  min-height: 0px;
+}
+
+/* datePicker component */
+.v-picker {
+  border-radius: 4px !important;
+  border: 1px solid #ffffff !important;
+}
+
+.v-picker__body {
+  overflow: inherit !important;
+  /*background-color: #1772aa !important;*/
+}
+
+.theme--dark.v-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.v-text-field.v-text-field--enclosed .v-text-field__details {
+  margin: 2px !important
+    /*   margin-bottom: 0px !important;
+  margin-top: 0px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important; */
+}
+
+/* .v-text-field.v-text-field--enclosed .v-text-field__details, .v-text-field.v-text-field--enclosed > .v-input__control > .v-input__slot {
+  padding: 0 0px !important;
+} */
+.v-text-field.v-text-field--solo:not(.v-text-field--solo-flat)>.v-input__control>.v-input__slot {
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  margin-bottom: 0px
+}
+
+.acceso_btn {
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  width: 240px;
+  padding: 8px
+}
+
+.border-acceso {
+  border: 1px solid #e88444;
+  border-radius: 10px;
+  margin: 0
+}

@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  oficinaVirtual:
+    image: oficinavirtual:1.4
+    restart: always
+    ports:
+      - "3110:3110"
+    command: npm run start
+    # volumes:
+    #   - dist/:/usr/src/nuxt-app/.nuxt
