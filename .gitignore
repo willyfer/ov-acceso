@@ -88,3 +88,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+./src/components/shared/uploader/uploadOcr.vue
+./src/plugins/google-maps.js
